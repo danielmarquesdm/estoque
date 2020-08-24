@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="br.com.pulse.estoque.mapper.FilialMapper">
+    <resultMap id="filialMap" type="br.com.pulse.estoque.model.Filial">
+        <result column="cnpj" property="cnpj"/>
+        <result column="razao_social" property="razaoSocial"/>
+    </resultMap>
+
+    <insert id="salvar" parameterType="br.com.pulse.estoque.model.Filial" >
+        insert into filiais (cnpj, razao_social) values (
+            #{filial.cnpj},
+            #{filial.razaoSocial}
+        )
+    </insert>
+    <select id="recuperar" parameterType="br.com.pulse.estoque.model.Filial"
+            resultType="br.com.pulse.estoque.model.Filial" resultMap="filialMap">
+        select * from filiais
+    </select>
+    <select id="recuperarPorCnpj" parameterType="br.com.pulse.estoque.model.Filial"
+            resultType="br.com.pulse.estoque.model.Filial" resultMap="filialMap">
+        select * from filiais where cnpj like #{cnpj}
+    </select>
+    <update id="atualizarPorCnpj" parameterType="br.com.pulse.estoque.model.Filial">
+
+    </update>
+    <delete id="deletarPorCnpj" parameterType="br.com.pulse.estoque.model.Filial">
+        delete from filiais where cnpj like #{cnpj}
+    </delete>
+</mapper>
