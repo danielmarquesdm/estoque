@@ -6,4 +6,3 @@
 estoque
 ==============
 
-Insira sua documentação principal aqui.
